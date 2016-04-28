@@ -1,19 +1,14 @@
 <h2><em>Listing new and Trending posts....</em></h2>
 
 <table class="table table-hover table-striped">
-  
-
   <tr>
-
     <% @posts.each do |post| %>
     <td><strong><i class="icon-pencil"></i>   <%= post.title %></strong> <br/>
-<p style="font-size: 11px"><em><%= time_ago_in_words post.created_at %> ago by  <%= post.user.username %> </em></p><br/>
+	<p style="font-size: 11px"><em><%= time_ago_in_words post.created_at %> ago by  <%= post.user.username %> </em></p><br/>
     <p>  <%= truncate(post.content, :length => 200)%></p><br/>
-
     <%= link_to 'Read more..', post, class: "btn btn-small" %></td>
-    
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 

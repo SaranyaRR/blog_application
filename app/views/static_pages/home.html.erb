@@ -5,48 +5,21 @@
 <!--[if lt IE 7]><link rel="stylesheet" href="css/bootstrap-ie6.css"><![endif]-->
 
 <div class="center hero-unit">
-<!--<h1>Bloggers' Niche</h1>
-<h3>What's your story??</h3><br/>
-<h2>
-http://www.wespeaknews.com/wp-content/uploads/2011/12/mood-indigo-2011.jpg
- Right here! Right now!! Write away!!
-http://4.bp.blogspot.com/-2FXUhojLCts/UaxEuYsOggI/AAAAAAAAAAU/OWNVu-cIOeE/s400/Abstract.jpg
-</h2>
-#smallbg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('http://coolblackppt.com/wp-content/uploads/2013/06/Texture-background-wallpaper-black-wallpapers-textures-download.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100%;
-    opacity: 0.6;
-    filter:alpha(opacity=60);
-}
-
--->
-
 
 <div style="text-align:center; background: url('http://coolblackppt.com/wp-content/uploads/2013/06/Texture-background-wallpaper-black-wallpapers-textures-download.jpg');background-repeat:no-repeat ;opacity: 0.9;filter:alpha(opacity=80);">
     <div class="masthead"><br/><br/>
       <h1 style="font-size:70px;color:#fff;"><i> Bloggers' Niche</i></h1>
-      
       <p style="color:#fff;">
         &nbsp;  Right here! Right now!! Write away!
       </p>
     </div>
     <br>
     <div class="btn btn-large" style="text-align:center;"> 
-
       <% if user_signed_in? %>
             <center><%= link_to 'Write a post', new_post_path %></center>
       <% else %>
             <center><%= link_to 'Start here', new_user_registration_path %></center>
      <% end %>
- 
-
     </div>
     <br><br><br>
   </div>
@@ -54,30 +27,16 @@ http://4.bp.blogspot.com/-2FXUhojLCts/UaxEuYsOggI/AAAAAAAAAAU/OWNVu-cIOeE/s400/A
 
 <div class="row">
   <div class="span8"> 
-  <!--  <div id="myCarousel" class="carousel slide">
-   
-    <div class="carousel-inner">
-        <div class="item" data-interval="200"><center><img alt="Store" height="600" src="/assets/1.jpg" width="750">
-        </center></div>
-        <div class="item"><center><img alt="Sell" height="600" src="/assets/2.jpg" width="750">
-        </center></div>
-        <div class="item active"><center><img alt="Admin" height="600" src="/assets/1.jpg" width="850">
-        </center></div>
-    </div>
-
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev" onclick="$('#myCarousel').carousel('prev')">‹</a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next" onclick="$('#myCarousel').carousel('next')">›</a>
-</div> --><br/><br/>
- <%= render "posts/display" %> 
-
-    
+    <br/><br/>
+    <%= render "posts/display" %>   
   </div>
 
-  <div class="span4" align="justify"><em><p class="text-info"><br/><br/><br/>
-
+  <div class="span4" align="justify">
+    <em><p class="text-info"><br/><br/><br/>
     <center><strong>What is bloggers' Niche??</strong></center><br/>
     This platform is a discussion or informational site published on the World Wide Web and consisting of discrete entries ("posts") typically displayed in reverse chronological order (the most recent post appears first). Until 2009 blogs were usually the work of a single individual, occasionally of a small group, and often covered a single subject. More recently "multi-author blogs" (MABs) have developed, with posts written by large numbers of authors and professionally edited. MABs from newspapers, other media outlets, universities, think tanks, interest groups and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other "microblogging" systems helps integrate MABs and single-author blogs into societal newstreams. Blog can also be used as a verb, meaning to maintain or add content to a blog.
-  </p></em></div>
+    </p></em>
+  </div>
 </div>
 
 

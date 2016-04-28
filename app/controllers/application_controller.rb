@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def authorize_blogger!
-    if user_signed_in?  
-      #&& post.user_id == current_user.id
-
+    if user_signed_in?
       return
     elsif user_signed_in? 
       flash[:notice] = 'You must be an authorized blogger to do that'

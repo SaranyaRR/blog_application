@@ -4,40 +4,6 @@
 <div class="row">
   <div class="span8"> 
 <br/>
-<!--<table class="table table-hover table-striped" style=" overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;">
-  <tr class="success">
-    <th>Blogs to read</th>
-    <th></th>
- <th></th><th></th>
-  </tr>
-
-   
-  <tr>
-
-    <% @posts.each do |post| %>
-    <td><strong><%= post.title %></strong> <br/><%= time_ago_in_words post.created_at %> ago by <%= post.user.username %> <br/>
-</td>
-    
-  
-    <p>  <%= truncate(post.content, :length => 150) %></p><br/>
-    
-
-
-    <%= link_to 'Read more..', post, class: "btn" %>
-      <% if user_signed_in? && (post.user_id == current_user.id) %>
-      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
-      <% end %>
-    
-      <% if user_signed_in? && (post.user_id == current_user.id) %>
-      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-      <% end %>
-    </tr>
-<% end %>
-</table>
-
--->
 <style>
 ul
 {
@@ -50,45 +16,31 @@ li
 display:inline;
 }
 </style>
-
-
-
-
-
 <table class="table table-hover table-striped">
-  
-
   <tr>
- 
     <% @posts.each do |post| %>
-   <td><strong><i class="icon-pencil"></i>   <%= post.title %></strong> <br/>
-    <p style="font-size: 11px"><em><%= time_ago_in_words post.created_at %> ago by  <%= post.user.username %> </em></p><br/>
-    <p>  <%= truncate(post.content, :length => 200)%></p><br/>
-   
-   <!-- <td><%= post.user_id %></td>                    user.email-->
-    
+      <td><strong><i class="icon-pencil"></i>   <%= post.title %></strong> <br/>
+      <p style="font-size: 11px"><em><%= time_ago_in_words post.created_at %> ago by  <%= post.user.username %> </em></p><br/>
+      <p>  <%= truncate(post.content, :length => 200)%></p><br/>
+      <ul>
+        <li style="margin-right: 10px">
+          <% if user_signed_in? %>
+            <%= post.get_upvotes.size %>
+            <%= link_to "&#9650;".html_safe, like_post_path(post), method: :put, class: "btn" %>
+          <% end %>
+        </li>
+        <li>
+          <% if user_signed_in? %>
+            <%= post.get_downvotes.size %>
+            <%= link_to " &#9660;".html_safe, dislike_post_path(post), method: :put, class: "btn" %>
 
-<ul>
-  <li style="margin-right: 10px">
-    <% if user_signed_in? %>
-      <%= post.get_upvotes.size %>
-      <%= link_to "&#9650;".html_safe, like_post_path(post), method: :put, class: "btn" %>
-
-    <% end %>
-  </li>
-  <li>
-    <% if user_signed_in? %>
-      <%= post.get_downvotes.size %>
-      <%= link_to " &#9660;".html_safe, dislike_post_path(post), method: :put, class: "btn" %>
-
-      <%= link_to like_post_path(post), method: :put do %>
-        <i class=" icon-flip-horizontal "></i>
-      <% end %>
-
-    <% end %>
-  </li>
-</ul>
-<br/>
+            <%= link_to like_post_path(post), method: :put do %>
+              <i class=" icon-flip-horizontal "></i>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+      <br/>
 
 <ul>
   <li>   <%= link_to 'Read more..', post, class: "btn" %> 

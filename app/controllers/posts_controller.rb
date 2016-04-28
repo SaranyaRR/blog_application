@@ -22,23 +22,16 @@ class PostsController < ApplicationController
  def index
    @posts = Post.all(:order => "created_at DESC")
    @posts1 = Post.group(:cat)
-
-
-
-    #.find(:all, :order => "created_at DESC", :limit => 5)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-      format.atom
+   respond_to do |format|
+     format.html # index.html.erb
+     format.json { render json: @posts }
+     format.atom
     end
   end
   
   def dashboard
-   # @posts = Post.all(:order => "created_at DESC")
-      #@posts= @current_user.posts(:order => "created_at DESC")
     @posts = Post.where(:user_id => current_user.id)   
-     respond_to do |format|
+    respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
     end
@@ -48,9 +41,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-  #@user = User.find(params[:user_id])
-
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
@@ -61,7 +51,6 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

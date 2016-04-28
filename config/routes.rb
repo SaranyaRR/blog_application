@@ -2,9 +2,10 @@ App::Application.routes.draw do
   
 
 
-  resources :categories
-
-
+# =>   resources :categories
+   match 'categories/:id' => 'categories#show'
+    match 'categories/' => 'categories#index'
+  
   get "comments/edit"
 
   get "comments/create"
