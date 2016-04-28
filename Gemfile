@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'bootstrap-sass', '2.0.0'
-gem 'sqlite3'
+#gem 'sqlite3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'pg'
+gem 'pg'
 
 gem 'devise'
 gem 'cancan'
