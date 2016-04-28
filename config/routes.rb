@@ -2,9 +2,7 @@ App::Application.routes.draw do
   
 
 
-# =>   resources :categories
-   match 'categories/:id' => 'categories#show'
-    match 'categories/' => 'categories#index'
+  resources :categories, :except => [:new, :create, :edit, :update, :destroy]
   
   get "comments/edit"
 
@@ -20,7 +18,7 @@ App::Application.routes.draw do
 
   devise_for :users
 
-  match '/help', to: 'static_pages#help'
+  match '/help', to: 'sta tic_pages#help'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact' 
   match '/dashboard', to: 'posts#dashboard'
