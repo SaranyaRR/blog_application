@@ -9,6 +9,7 @@
     <td><strong><i class="icon-pencil"></i>   <%= post.title %></strong> <br/>
 <p style="font-size: 11px"><em><%= time_ago_in_words post.created_at %> ago by  <%= post.user.username %> </em></p><br/>
     <p>  <%= truncate(post.content, :length => 200)%></p><br/>
+
     <%= link_to 'Read more..', post, class: "btn btn-small" %></td>
     
   </tr>
@@ -17,4 +18,4 @@
 
 
 <br/><br/><br/>
-<center><%= link_to 'View all posts', posts_path, :class => "btn btn-primary btn-large" %></center>
+<center><%= link_to 'Click here to view all posts and vote', posts_path, :class => "btn btn-primary btn-large" %></center>

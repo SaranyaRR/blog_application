@@ -7,6 +7,7 @@ gem 'bootstrap-sass', '2.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'acts_as_votable'
 
 gem 'devise'
 gem 'cancan'
@@ -40,4 +41,4 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+# gem 'byebug'

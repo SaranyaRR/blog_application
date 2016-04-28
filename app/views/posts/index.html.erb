@@ -69,10 +69,32 @@ display:inline;
     
 
 <ul>
+  <li style="margin-right: 10px">
+    <% if user_signed_in? %>
+      <%= post.get_upvotes.size %>
+      <%= link_to "&#9650;".html_safe, like_post_path(post), method: :put, class: "btn" %>
+
+    <% end %>
+  </li>
+  <li>
+    <% if user_signed_in? %>
+      <%= post.get_downvotes.size %>
+      <%= link_to " &#9660;".html_safe, dislike_post_path(post), method: :put, class: "btn" %>
+
+      <%= link_to like_post_path(post), method: :put do %>
+        <i class=" icon-flip-horizontal "></i>
+      <% end %>
+
+    <% end %>
+  </li>
+</ul>
+<br/>
+
+<ul>
   <li>   <%= link_to 'Read more..', post, class: "btn" %> 
     </li><li>
       <% if user_signed_in? && (post.user_id == current_user.id) %>
-      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
+        <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
       <% end %>
     </li><li>
       <% if user_signed_in? && (post.user_id == current_user.id) %>

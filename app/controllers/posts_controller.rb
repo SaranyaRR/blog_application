@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
 
  def index
-    @posts = Post.all(:order => "created_at DESC")
+   @posts = Post.all(:order => "created_at DESC")
    @posts1 = Post.group(:cat)
 
 
@@ -124,5 +124,17 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    redirect_to posts_path
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.downvote_by current_user
+    redirect_to posts_path
   end
 end
