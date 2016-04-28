@@ -1,0 +1,12 @@
+<h2>Listing category-wise posts</h2>
+<h3>
+<p align="justify">
+It’s important to do some planning before you decide on your blog categories. You want to stay broad, yet relevant. You don’t want to end up with one or two posts in a category, and if you have that, you’ve either not written many posts or you have a category that is probably doesn’t represent what your blog is all about. Check out on the available posts, that have been categorised. Click on the links, that would lead you forward..</p></h3>
+<table class="table table-hover">
+<% @categories.each do |c| %>
+      <tr>
+               <td> <i  class="icon-folder-open">      </i>        <%= link_to c.categoryname ,c %></td>
+      </tr>
+    <% end %>
+
+</table>

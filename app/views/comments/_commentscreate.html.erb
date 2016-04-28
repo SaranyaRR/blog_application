@@ -1,0 +1,32 @@
+
+
+  <table class="table" >
+ 
+
+<div class="span7">
+  <% @post.comments.each do |comment| %>
+  <tr><td>
+    <p><strong>  <i class="icon-user">  </i>  <%= comment.user.username %> : </strong><%= comment.text %></p>
+    <p style="font-size: 11px"><em><%= time_ago_in_words comment.created_at %> ago</em></p>
+    <p>
+      <% if user_signed_in? && ((@post.user_id == current_user.id) || (comment.user_id == current_user.id)) %>
+        <%= link_to "Delete ", [@post,comment], :method => :delete, :confirm => "Are you sure to delete the comment?", :class => " btn btn-danger btn-small"%>
+      <% end %>  
+    </p>
+   </tr></td>  
+  <% end %>
+</div>
+ </table>
+
+  <%= form_for([@post, @post.comments.build], remote: true) do |f| %> 
+  <p><% if user_signed_in? %><p>
+          <%= f.text_area :text, :size => '100*10', placeholder: "Write your views " %> </p>
+  
+        <i class="icon-comment"></i>  <%= f.submit "Comment ", class: "btn btn-primary" %> 
+        <% else %>
+          <%= link_to 'Sign in to post comment', new_user_session_path, class: "btn" %>
+
+     <% end %>
+  <% end %>
+  </p>
+</table>

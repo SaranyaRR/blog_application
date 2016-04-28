@@ -1,0 +1,54 @@
+<style>
+ul
+{
+list-style-type:none;
+margin:04;
+padding:0;
+}
+li
+{
+display:inline;
+}
+</style>
+<div class="span8">
+
+    <h2> Hi <%= current_user.username %> <br/> <br/>You have written <%= current_user.posts.count %> Blog Posts. Have a look!! </h2>
+
+<table class="table table-hover table-striped">
+  
+
+  <tr>
+
+    <% @posts.each do |post| %>
+    <td><strong><i  class="icon-pencil"></i>  <%= post.title %></strong> <br/>
+<p style="font-size: 11px"><em><%= time_ago_in_words post.created_at %> ago </em></p><br/>
+    <p>  <%= truncate(post.content, :length => 200)%></p><br/>
+   
+   <!-- <td><%= post.user_id %></td>                    user.email-->
+    
+
+<ul>
+  <li>   <%= link_to 'Read more..', post, class: "btn" %> 
+    </li><li>
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
+      <% end %>
+    </li><li>
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <% end %>
+     </li>
+     </ul> 
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create new post', new_post_path, class: "btn btn-primary" %>
+
+</div>
+   
+ 
+

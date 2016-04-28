@@ -1,0 +1,20 @@
+<%= form_for @test, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :field1, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :field1, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :field2, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :field2, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tests_path, :class => 'btn' %>
+  </div>
+<% end %>

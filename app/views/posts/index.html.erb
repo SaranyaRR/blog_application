@@ -1,0 +1,110 @@
+ <h2>All posts penned... </h2>
+  <br/>
+  <br/>
+<div class="row">
+  <div class="span8"> 
+<br/>
+<!--<table class="table table-hover table-striped" style=" overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;">
+  <tr class="success">
+    <th>Blogs to read</th>
+    <th></th>
+ <th></th><th></th>
+  </tr>
+
+   
+  <tr>
+
+    <% @posts.each do |post| %>
+    <td><strong><%= post.title %></strong> <br/><%= time_ago_in_words post.created_at %> ago by <%= post.user.username %> <br/>
+</td>
+    
+  
+    <p>  <%= truncate(post.content, :length => 150) %></p><br/>
+    
+
+
+    <%= link_to 'Read more..', post, class: "btn" %>
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
+      <% end %>
+    
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <% end %>
+    </tr>
+<% end %>
+</table>
+
+-->
+<style>
+ul
+{
+list-style-type:none;
+margin:04;
+padding:0;
+}
+li
+{
+display:inline;
+}
+</style>
+
+
+
+
+
+<table class="table table-hover table-striped">
+  
+
+  <tr>
+ 
+    <% @posts.each do |post| %>
+   <td><strong><i class="icon-pencil"></i>   <%= post.title %></strong> <br/>
+    <p style="font-size: 11px"><em><%= time_ago_in_words post.created_at %> ago by  <%= post.user.username %> </em></p><br/>
+    <p>  <%= truncate(post.content, :length => 200)%></p><br/>
+   
+   <!-- <td><%= post.user_id %></td>                    user.email-->
+    
+
+<ul>
+  <li>   <%= link_to 'Read more..', post, class: "btn" %> 
+    </li><li>
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
+      <% end %>
+    </li><li>
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <% end %>
+     </li>
+     </ul> 
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if user_signed_in? %>
+      <%= link_to 'Create new post', new_post_path, class: "btn btn-primary" %>
+      <% end %>
+
+
+
+
+
+</div>
+<div class="span4">
+  <br />
+  <table class="table">
+    <tr>
+      <th style="background-color:white">Categorize your blogs</th>
+    </tr>
+       
+  </table><p align="justify"><em>
+This platform allow you to choose blog categories to organize your content. At first you might choose your categories without giving them much thought, but as time goes on, you will start to realize the importance of carefully choosing the best categories for your blog. The blog categories you choose will be part of the blog’s map for success, and they will determine the direction of your content. Luckily, you can change them as you grow, so there is no harm done if you need to rethink your blog’s categories. Categories that have blogs currently in our website.....  
+</em>
+         </p>   <%= link_to "View our blogs by category ", categories_path , class: "btn" %> 
+</div> 
+</div>

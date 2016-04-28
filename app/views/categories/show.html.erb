@@ -1,0 +1,71 @@
+<style>
+ul
+{
+list-style-type:none;
+margin:04;
+padding:0;
+}
+li
+{
+display:inline;
+}
+</style>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category name:</b>
+  <%= @category.categoryname %>
+</p><br/>
+<b> Posts (displaying available posts) </b>
+
+
+<table class="table table-striped">
+    <% @posts.each do |post| %>
+   <% if post.cat == @category.categoryname %>
+ <tr>
+      <td>
+        <strong><i class="icon-pencil"> </i>  <%= post.title %></strong> <br/>
+      <p style="font-size: 11px;"><em><%= time_ago_in_words post.created_at %> ago by  <%= post.user.username %></em></p> <br/><br/>
+                <p> <%= truncate(post.content, :length => 200)%></p><br/>
+                
+                </td>
+                     <!-- <td><%= post.user_id %></td>                    user.email-->
+      <td>
+
+<ul>
+  <li>   <%= link_to 'Read more..', post, class: "btn" %> 
+    </li><li>
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
+      <% end %>
+    </li><li>
+      <% if user_signed_in? && (post.user_id == current_user.id) %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <% end %>
+     </li>
+     </ul> 
+    
+
+    
+
+
+         <% end %> 
+      
+      
+  </tr>
+<% end %>
+
+
+
+
+
+</table>
+
+
+
+  <br/><br/>
+<%= link_to 'Back', categories_path, class: "btn" %>
+
